@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Message Board</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #messageBoard {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -13,57 +50,20 @@
     <button onclick="postMessage()">Post</button>
     <div id="messageBoard"></div>
   </div>
-  <script src="script.js"></script>
+  <script>
+    function postMessage() {
+      const messageInput = document.getElementById("messageInput");
+      const messageBoard = document.getElementById("messageBoard");
+
+      if (messageInput.value.trim() !== "") {
+        const newMessage = document.createElement("div");
+        newMessage.textContent = messageInput.value;
+        messageBoard.appendChild(newMessage);
+
+        // Clear the input field after posting the message
+        messageInput.value = "";
+      }
+    }
+  </script>
 </body>
 </html>
-body {
-  font-family: Arial, sans-serif;
-}
-
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-h1 {
-  text-align: center;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-button {
-  background-color: #007BFF;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-#messageBoard {
-  margin-top: 20px;
-}
-<script>
-function postMessage() {
-  const messageInput = document.getElementById("messageInput");
-  const messageBoard = document.getElementById("messageBoard");
-
-  if (messageInput.value.trim() !== "") {
-    const newMessage = document.createElement("div");
-    newMessage.textContent = messageInput.value;
-    messageBoard.appendChild(newMessage);
-
-    // Clear the input field after posting the message
-    messageInput.value = "";
-  }
-}
-
-</script>
